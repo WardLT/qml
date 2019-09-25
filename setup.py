@@ -18,7 +18,7 @@ __url__ = "https://github.com/qmlcode/qml"
 FORTRAN = "f90"
 
 # GNU (default)
-COMPILER_FLAGS = ["-O3", "-fopenmp", "-m64", "-march=native", "-fPIC",
+COMPILER_FLAGS = ["-O3", "-fopenmp", "-m64", "-march=sandybridge", "-fPIC",
                     "-Wno-maybe-uninitialized", "-Wno-unused-function", "-Wno-cpp"]
 LINKER_FLAGS = ["-lgomp"]
 # MATH_LINKER_FLAGS = ["-lblas", "-llapack", "-latlas", "-fopenmp"]
@@ -31,7 +31,7 @@ if mkl_exists(verbose=True):
 
 # For clang without OpenMP: (i.e. most Apple/mac system)
 if sys.platform == "darwin" and all(["gnu" not in arg for arg in sys.argv]):
-    COMPILER_FLAGS = ["-O3", "-m64", "-march=native", "-fPIC"]
+    COMPILER_FLAGS = ["-O3", "-m64", "-march=sandybridge", "-fPIC"]
     LINKER_FLAGS = []
     # MATH_LINKER_FLAGS = ["-lblas", "-llapack", "-latlas", "-fopenmp"]
     MATH_LINKER_FLAGS = ["-lblas", "-llapack"]
